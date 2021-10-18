@@ -6,8 +6,8 @@ import pyttsx3 as p3  #converting test to voice
 dict = {'full stop':'.', 'exclamation mark':'!', 'star': '*', 's line': '$', 'at the rate': '@', 'hash': '#',
         'open parenthesis': '(', 'close parenthesis': ')', 'open braces': '{', 'close braces': '}',
         'open bracket': '[','close bracket': ']', 'caret': '^', 'percent': '%', 'plus': '+', 'minus': '-',
-        'equal to': '=', 'comma': ',','invert': '"','int One':1, 'int two':2, 'int three':3,
-        'int four':4, 'int five':5, 'int six':6, 'int seven':7,'int eight':8, 'int nine':9,'int zero':0}
+        'equal to': '=', 'comma': ',','invert': '"'}
+        
 
 
 listener=sr.Recognizer()
