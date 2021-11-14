@@ -49,10 +49,12 @@ def send_email(receiver, subject,message):
 
 email_list={
      'Arya':'aryaparasharj007@gmail.com',
-     'Arya1':'aryaparasharj02@gmail.com ',
+     'Aayush':'aayushgupta2708@gmail.com',
      'Arpit':'arpit30699@gmail.com',
      'Deepanshu':'deepanshuaggarwal1409@gmail.com',
-     }
+     'Salik':'salikshah2708@gmail.com',
+     'Pallavi':'pallavisharma80455@gamil.com
+      }
 
 def get_email_info():
     talk('To Whom you want to send the email')
