@@ -53,7 +53,7 @@ email_list={
      'Arpit':'arpit30699@gmail.com',
      'Deepanshu':'deepanshuaggarwal1409@gmail.com',
      'Salik':'salikshah2708@gmail.com',
-     'Pallavi':'pallavisharma80455@gamil.com
+     'Pallavi':'pallavisharma80455@gamil.com'
       }
 
 def get_email_info():
