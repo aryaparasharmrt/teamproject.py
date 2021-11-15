@@ -52,7 +52,7 @@ email_list={
      'Aayush':'aayushgupta2708@gmail.com',
      'Arpit':'arpit30699@gmail.com',
      'Deepanshu':'deepanshuaggarwal1409@gmail.com',
-     'Salik':'salikshah2708@gmail.com',
+     'Salik':'salikshah1404@gmail.com',
      'Pallavi':'pallavisharma80455@gamil.com'
       }
 
