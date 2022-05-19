@@ -5,7 +5,6 @@ import pyttsx3 as p3  # converting test to voice
 import pywhatkit as pw
 import datetime
 import wikipedia as wiki
-# import pyaudio as py
 import pyjokes as pj
 
 dict = {'full stop': '.', 'exclamation mark': '!', 'star': '*', 's line': '$', 'at the rate': '@', 'hash': '#',
@@ -16,11 +15,9 @@ dict = {'full stop': '.', 'exclamation mark': '!', 'star': '*', 's line': '$', '
 listener = sr.Recognizer()
 engine = p3.init()
 
-
 def talk(text):
     engine.say(text)
     engine.runAndWait()
-
 
 def get_info():
     try:
@@ -41,9 +38,25 @@ def get_info():
     except:
         pass
 
+def take_command():
+    try:
+        with sr.Microphone() as source:
+            print('listening...')
+            listener.adjust_for_ambient_noise(source, duration=1)
+            voice = listener.listen(source)
+            command = listener.recognize_google(voice)
+            # print(command)
+            if 'Alexa' in command:
+                # command = command.replace('Alexa', ' ')
+                talk(command)
+            else:
+                print('Word  is not found')
+                return
+    except:
+        pass
+    return command
 
 def send_email(receiver, subject, message):
-
     server = smt.SMTP('smtp.gmail.com', 587)
     server.starttls()
     server.login('aryaparasharj02@gmail.com', 'Arya123@#123')
@@ -54,6 +67,7 @@ def send_email(receiver, subject, message):
     email.set_content(message)
     server.send_message(email)
 
+our_list=["Aryan","Pallavi","Deepanshu","Arpit","Salik","Pallavi"]
 
 email_list = {
     'Aryan': 'aryaparasharj007@gmail.com',
@@ -64,11 +78,16 @@ email_list = {
     'Pallavi': 'pallavisharma80455@gamil.com'
 }
 
-
 def get_email_info():
     talk('To Whom you want to send the email')
     name = get_info()
-    receiver = email_list[name]
+    if name in our_list:
+        receiver = email_list[name]
+    else:
+        print("This User is not Registered in Your Dictionary")
+        talk("This User is not Registered in Your Dictionary")
+        return
+
     talk('What is the subject of your email')
     subject = get_info()
     talk('Tell me the text in your email')
@@ -76,26 +95,37 @@ def get_email_info():
     send_email(receiver, subject, message)
 
 def run_alexa():
-
     command = take_command()
-    print(command)
+    if "Alexa" in command:
+        print(command)
+    else:
+        print("Invalid Commad")
+        talk("Invalid Command")
+        return
     if 'play' in command:
-        song=command.replace('play', '')
-        talk('playing'+ song)
+        song = command.replace('play', '')
+        talk('playing' + song)
         pw.playonyt(song)
     elif 'time' in command:
-        time=datetime.datetime.now().strftime('%H:%M')
+        time = datetime.datetime.now().strftime('%H:%M')
         print(time)
-        talk('Current time is'+ time)
+        talk('Current time is' + time)
     elif 'who' in command:
-        person = command.replace('who','')
-        info=wiki.summary(person,1)
+        person = command.replace('who', '')
+        info = wiki.summary(person, 1)
         print(info)
         talk(info)
     elif 'joke' in command:
         print(pj.get_jokes())
         talk(pj.get_jokes())
+    elif 'email' in command:
+        get_email_info()
+        return
+    elif "stop" in command:
+        return
+    else:
+        print("Unable to identify command")
 
-while True:
-    run_alexa()
-get_email_info()
+run_alexa()
+
+
