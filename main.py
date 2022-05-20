@@ -26,7 +26,6 @@ def get_info():
             listener.adjust_for_ambient_noise(source, duration=1)
             voice = listener.listen(source)
             info = listener.recognize_google(voice)
-            # print(info)
             for i in dict:
                 if i in info:
                     info = info.replace(i, dict[i])
@@ -42,13 +41,13 @@ def take_command():
     try:
         with sr.Microphone() as source:
             print('listening...')
+
             listener.adjust_for_ambient_noise(source, duration=1)
             voice = listener.listen(source)
             command = listener.recognize_google(voice)
             # print(command)
             if 'Alexa' in command:
-                # command = command.replace('Alexa', ' ')
-                talk(command)
+                pass
             else:
                 print('Word  is not found')
                 return
@@ -97,7 +96,7 @@ def get_email_info():
 def run_alexa():
     command = take_command()
     if "Alexa" in command:
-        print(command)
+        pass
     else:
         print("Invalid Commad")
         talk("Invalid Command")
@@ -111,7 +110,7 @@ def run_alexa():
         print(time)
         talk('Current time is' + time)
     elif 'who' in command:
-        person = command.replace('who', '')
+        person = command.replace('hi Alexa who is', ' ')
         info = wiki.summary(person, 1)
         print(info)
         talk(info)
@@ -127,5 +126,3 @@ def run_alexa():
         print("Unable to identify command")
 
 run_alexa()
-
-
